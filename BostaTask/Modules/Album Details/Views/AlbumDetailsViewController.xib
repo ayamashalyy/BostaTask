@@ -21,21 +21,15 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoM-yz-k6g">
-                    <rect key="frame" x="16" y="67" width="361" height="36"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="BqJ-7v-Tqu">
-                    <rect key="frame" x="8" y="105" width="377" height="56"/>
+                    <rect key="frame" x="8" y="69" width="377" height="56"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="d3N-ex-ZD8"/>
                     </connections>
                 </searchBar>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8xg-d2-rYh">
-                    <rect key="frame" x="0.0" y="171" width="393" height="647"/>
+                    <rect key="frame" x="0.0" y="135" width="393" height="683"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YLN-WW-b6J">
                         <size key="itemSize" width="128" height="128"/>
@@ -49,15 +43,12 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="8xg-d2-rYh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="0Vr-WL-FBA"/>
-                <constraint firstItem="qoM-yz-k6g" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="0eT-Mh-nci"/>
-                <constraint firstItem="BqJ-7v-Tqu" firstAttribute="top" secondItem="qoM-yz-k6g" secondAttribute="bottom" constant="2" id="1r0-Po-U5R"/>
                 <constraint firstItem="8xg-d2-rYh" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="DTy-Ph-IF8"/>
                 <constraint firstAttribute="trailing" secondItem="BqJ-7v-Tqu" secondAttribute="trailing" constant="8" id="Jzb-bJ-54P"/>
                 <constraint firstItem="8xg-d2-rYh" firstAttribute="top" secondItem="BqJ-7v-Tqu" secondAttribute="bottom" constant="10" id="PBv-9Y-yXm"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qoM-yz-k6g" secondAttribute="trailing" constant="16" id="Pll-27-o42"/>
                 <constraint firstItem="8xg-d2-rYh" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="cWv-FD-dWK"/>
-                <constraint firstItem="qoM-yz-k6g" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="ecq-k3-GwN"/>
                 <constraint firstItem="BqJ-7v-Tqu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="wjZ-58-hvD"/>
+                <constraint firstItem="BqJ-7v-Tqu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="xhl-Cs-TCu"/>
             </constraints>
             <point key="canvasLocation" x="113.74045801526717" y="19.718309859154932"/>
         </view>

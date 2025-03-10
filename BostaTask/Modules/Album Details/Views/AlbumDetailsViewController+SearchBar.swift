@@ -11,6 +11,6 @@ import UIKit
 extension AlbumDetailsViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-     
+        viewModel.filterPhotos(by: searchText)
     }
 }
