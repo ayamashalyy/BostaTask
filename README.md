@@ -25,30 +25,6 @@ BostaTask is an iOS application built using **Swift** and **UIKit** that fetches
 
 ---
 
-## Folder Structure
-BostaTask/
-│── Models/
-│   ├── User.swift
-│   ├── Album.swift
-│   ├── Photo.swift
-│── ViewModels/
-│   ├── ProfileViewModel.swift
-│   ├── AlbumViewModel.swift
-│── Views/
-│   ├── ProfileViewController.swift
-│   ├── AlbumViewController.swift
-│   ├── ImageViewerViewController.swift
-│── Networking/
-│   ├── APIService.swift
-│   ├── APIServiceManager.swift
-│── Utility/
-│   ├── APIEndpoints.swift
-│── Resources/
-
-
-
----
-
 ## Installation
 1. Clone the repository:
    ```sh
