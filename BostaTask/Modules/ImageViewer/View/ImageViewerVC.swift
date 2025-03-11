@@ -9,45 +9,42 @@ import UIKit
 
 class ImageViewerVC: UIViewController {
     
-    @IBOutlet weak var zoomImage: UIImageView!
+    var image: UIImage?
     
-    var imageUrl: String?
+    let imageView: ImageScrollView = {
+        let v = ImageScrollView()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        return v
+    }()
     
-    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupGestures()
         
-        if let imageUrl = imageUrl, let url = URL(string: imageUrl) {
-            zoomImage.sd_setImage(with: url, placeholderImage: UIImage(named: "test"))
+        guard let image = self.image else{
+            dismiss(animated: false, completion: nil)
+            return
         }
+        imageView.display(image: image)
+        
     }
     
     private func setupUI() {
-        view.backgroundColor = .black
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareImage))
-        zoomImage.isUserInteractionEnabled = true
-    }
-    
-    private func setupGestures() {
-        let clickGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch))
-        zoomImage.addGestureRecognizer(clickGesture)
-    }
-    
-    
-    @objc private func handlePinch(_ gesture: UIPinchGestureRecognizer) {
-        guard let view = gesture.view else { return }
+        view.addSubview(imageView)
+        imageView.matchParentView(parentView: view)
+        imageView.setup()
+        view.backgroundColor = .white
         
-        if gesture.state == .changed || gesture.state == .began {
-            view.transform = view.transform.scaledBy(x: gesture.scale, y: gesture.scale)
-            gesture.scale = 1
-        }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .action,
+            target: self,
+            action: #selector(shareImage)
+        )
     }
     
     @objc private func shareImage() {
-        guard let image = zoomImage.image else { return }
-        let activityController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-        present(activityController, animated: true)
+        guard let image = self.image else { return }
+        let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        present(activityVC, animated: true, completion: nil)
     }
 }

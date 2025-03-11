@@ -12,18 +12,23 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     var imageTapped: (() -> Void)?
     
+    var loadedImage: UIImage? {
+            return imageView.image
+        }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        imageView.isUserInteractionEnabled = true
         setupGesture()
     }
     
     private func setupGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapGesture)
     }
     
     @objc private func handleTap() {
+        print("Cell tapped")
         imageTapped?()
     }
 }

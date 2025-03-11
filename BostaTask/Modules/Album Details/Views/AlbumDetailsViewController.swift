@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import SDWebImage
 
 class AlbumDetailsViewController: UIViewController {
     
@@ -74,7 +75,11 @@ class AlbumDetailsViewController: UIViewController {
                 cell.imageView.sd_setImage(with: URL(string: photo.thumbnailUrl), placeholderImage: UIImage(named: "test"))
                 cell.imageTapped = {
                     let imageViewerVC = ImageViewerVC()
-                    imageViewerVC.imageUrl = photo.url
+                    if let loadedImage = cell.loadedImage {
+                        imageViewerVC.image = loadedImage
+                    } else {
+                        imageViewerVC.image = UIImage(named: "test")
+                    }
                     self.navigationController?.pushViewController(imageViewerVC, animated: true)
                 }
             }
