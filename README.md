@@ -25,6 +25,11 @@ BostaTask is an iOS application built using **Swift** and **UIKit** that fetches
 
 ---
 
+## Demo Video
+[Click here to watch the demo](https://drive.google.com/file/d/1j4GHZeu8iakipV-hJjY5nndetUXQYuGx/view?usp=share_link)
+
+----
+
 ## Installation
 1. Clone the repository:
    ```sh
