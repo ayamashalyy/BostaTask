@@ -9,38 +9,53 @@ import Foundation
 import UIKit
 
 extension UIView {
-    // Matches the view's edges to its parent view
-    func matchParentView(parentView: UIView) {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.leadingAnchor.constraint(equalTo: parentView.leadingAnchor),
-            self.trailingAnchor.constraint(equalTo: parentView.trailingAnchor),
-            self.topAnchor.constraint(equalTo: parentView.topAnchor),
-            self.bottomAnchor.constraint(equalTo: parentView.bottomAnchor)
-        ])
+    
+    func enableAutoLayout() {
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
-    // Sets a fixed width constraint
-    func anchorWidth(equalToConstant width: CGFloat) {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.widthAnchor.constraint(equalToConstant: width).isActive = true
+    func matchParentView(parentView: UIView, horizontalMargin: CGFloat = 0, verticalMargin: CGFloat = 0){
+        parentView.addSubview(self)
+        topAnchor.constraint(equalTo: parentView.topAnchor, constant: verticalMargin)
+            .isActive = true
+        bottomAnchor.constraint(equalTo: parentView.bottomAnchor, constant: -verticalMargin)
+            .isActive = true
+        leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: horizontalMargin)
+            .isActive = true
+        trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -horizontalMargin)
+            .isActive = true
+        
     }
     
-    // Sets a fixed height constraint
-    func anchorHeight(equalToConstant height: CGFloat) {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.heightAnchor.constraint(equalToConstant: height).isActive = true
+    func anchorWidth(equalToConstant: CGFloat)  {
+        widthAnchor.constraint(equalToConstant: equalToConstant)
+            .isActive = true
+    }
+    func anchorHeight(equalToConstant: CGFloat)  {
+        heightAnchor.constraint(equalToConstant: equalToConstant)
+            .isActive = true
     }
     
-    // Anchors the view's leading edge to another view's leading edge with an optional constant
-    func anchorXAxis(leading: NSLayoutXAxisAnchor, leadingConstant: CGFloat = 0) {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.leadingAnchor.constraint(equalTo: leading, constant: leadingConstant).isActive = true
+    func anchorXAxis(leading:NSLayoutXAxisAnchor? = nil, trailing:NSLayoutXAxisAnchor? = nil, leadingConstant: CGFloat = 0, trailingConstant: CGFloat = 0) {
+        if let leading = leading {
+            leadingAnchor.constraint(equalTo: leading, constant: leadingConstant)
+                .isActive = true
+        }
+        if let trailing = trailing {
+            trailingAnchor.constraint(equalTo: trailing, constant: trailingConstant)
+                .isActive = true
+        }
     }
     
-    // Anchors the view's top edge to another view's top edge with an optional constant
-    func anchorYAxis(top: NSLayoutYAxisAnchor, topConstant: CGFloat = 0) {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.topAnchor.constraint(equalTo: top, constant: topConstant).isActive = true
+    func anchorYAxis(top:NSLayoutYAxisAnchor? = nil, bottom:NSLayoutYAxisAnchor? = nil, topConstant: CGFloat = 50, bottomConstant: CGFloat = 0) {
+        if let top = top {
+            topAnchor.constraint(equalTo: top, constant: topConstant)
+                .isActive = true
+        }
+        if let bottom = bottom {
+            bottomAnchor.constraint(equalTo: bottom, constant: bottomConstant)
+                .isActive = true
+        }
     }
+    
 }

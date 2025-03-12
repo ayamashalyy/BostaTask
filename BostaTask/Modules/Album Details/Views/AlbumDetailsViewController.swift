@@ -74,13 +74,10 @@ class AlbumDetailsViewController: UIViewController {
             .bind(to: collectionView.rx.items(cellIdentifier: "PhotoCollectionViewCell", cellType: PhotoCollectionViewCell.self)) { index, photo, cell in
                 cell.imageView.sd_setImage(with: URL(string: photo.thumbnailUrl), placeholderImage: UIImage(named: "test"))
                 cell.imageTapped = {
-                    let imageViewerVC = ImageViewerVC()
-                    if let loadedImage = cell.loadedImage {
-                        imageViewerVC.image = loadedImage
-                    } else {
-                        imageViewerVC.image = UIImage(named: "test")
-                    }
-                    self.navigationController?.pushViewController(imageViewerVC, animated: true)
+                    let fullScreenVC = FullScreenImageVC()
+                    fullScreenVC.image = cell.imageView.image
+                    fullScreenVC.modalPresentationStyle = .fullScreen
+                    self.present(fullScreenVC, animated: true, completion: nil)
                 }
             }
             .disposed(by: disposeBag)
